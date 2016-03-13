@@ -1,15 +1,24 @@
-from flask import Flask
+from flask import Flask, jsonify, request
+from bing_search import bing_search
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello():
-    return "Hello World!"
+# @app.route('/news')
+# def news():
+# 	try:
+# 		results = bing_search('Cardale Jones', 'News', None)
+# 	except Exception as inst:
+# 		print "exceptiom"
+# 		print type(inst)
+# 		print inst
+# 	return jsonify(results)
 
 
-@app.route('/<name>')
-def hello_name(name):
-    return "Hello {}!".format(name)
+@app.route('/news')
+def news():
+	name = request.args.get('name')
+	results = bing_search('Cardale Jones', 'News', None)
+	return jsonify(results)
 
 if __name__ == '__main__':
     app.run()
