@@ -16,9 +16,10 @@ app = Flask(__name__)
 
 @app.route('/news')
 def news():
-	name = request.args.get('name')
-	results = bing_search('Cardale Jones', 'News', None)
-	return jsonify(results)
+	# name = request.args.get('name')
+	# results = bing_search('Cardale Jones', 'News', None)
+	# return jsonify(results)
+	return "hello"
 
 if __name__ == '__main__':
     app.run()
